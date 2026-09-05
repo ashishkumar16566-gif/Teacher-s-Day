@@ -3,309 +3,461 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>A Letter of Gratitude — Teacher's Day</title>
+<title>A Little Diary of Gratitude</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --paper:#fbf1df;--ink:#503d31;--muted:#806d5b;--accent:#a87c62;
+  --cover:#a9856d;--cover2:#806451;--gold:#c8a77b;
+}
 body{
- min-height:100vh;color:#4c3829;font-family:Georgia,"Times New Roman",serif;
- background:
- radial-gradient(circle at 18% 12%,rgba(255,255,255,.72),transparent 27%),
- radial-gradient(circle at 84% 82%,rgba(122,79,40,.12),transparent 28%),
- linear-gradient(135deg,#cba577,#f3dfbd 48%,#c69b67);
- overflow-x:hidden;
+  min-height:100vh;overflow-x:hidden;color:var(--ink);
+  font-family:Georgia,"Times New Roman",serif;
+  background:radial-gradient(circle at 20% 10%,#fff8e8 0,transparent 25%),
+             radial-gradient(circle at 80% 90%,#b98b68 0,transparent 30%),
+             linear-gradient(135deg,#d8b48a,#f1dcc0 48%,#c79a70);
 }
-.petal{position:fixed;top:-40px;z-index:0;opacity:.6;animation:fall linear infinite;pointer-events:none}
-@keyframes fall{to{transform:translateY(110vh) rotate(360deg)}}
-.scene{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:28px 14px;position:relative;z-index:1}
+button,input{font:inherit}
+.decor{position:fixed;inset:0;pointer-events:none;overflow:hidden}
+.flower{position:absolute;font-size:28px;opacity:.35;animation:float 8s ease-in-out infinite}
+.f1{left:5%;top:7%}.f2{right:7%;top:12%;animation-delay:2s}.f3{left:9%;bottom:8%;animation-delay:4s}.f4{right:10%;bottom:10%;animation-delay:1s}
+@keyframes float{50%{transform:translateY(-13px) rotate(7deg)}}
+
+#gate{
+  min-height:100vh;display:flex;align-items:center;justify-content:center;padding:22px;
+}
 .envelope{
- width:min(920px,95vw);min-height:650px;position:relative;border-radius:10px 10px 22px 22px;
- background:linear-gradient(145deg,#e6c79a,#f8e4c1 48%,#d3aa76);
- box-shadow:0 35px 90px rgba(63,39,20,.34),inset 0 0 45px rgba(255,255,255,.22);
- overflow:hidden;padding:30px;
+  width:min(680px,94vw);min-height:540px;position:relative;display:flex;
+  align-items:center;justify-content:center;text-align:center;overflow:hidden;
+  border-radius:16px;background:linear-gradient(145deg,var(--cover),var(--cover2));
+  box-shadow:0 30px 80px #51372266;
+  border:8px solid #c69a62;
 }
-.envelope:after{
- content:"";position:absolute;inset:0;pointer-events:none;
- background:linear-gradient(30deg,transparent 49.8%,rgba(92,59,31,.11) 50%,transparent 50.2%),
- linear-gradient(-30deg,transparent 49.8%,rgba(92,59,31,.10) 50%,transparent 50.2%);
+.envelope:before,.envelope:after{
+  content:"";position:absolute;width:110%;height:2px;background:#d9b47d66;
 }
-.corner{position:absolute;font-size:28px;opacity:.65;z-index:1}.c1{left:22px;top:18px}.c2{right:22px;top:18px}.c3{left:22px;bottom:18px}.c4{right:22px;bottom:18px}
+.envelope:before{transform:rotate(28deg)}.envelope:after{transform:rotate(-28deg)}
+.seal{pointer-events:auto;touch-action:manipulation;
+  position:relative;z-index:2;width:125px;height:125px;border-radius:50%;
+  border:4px solid #e2c084;background:#9a3f3f;color:#fff8e9;
+  box-shadow:0 10px 25px #0005,inset 0 0 0 6px #7e3030;
+  cursor:pointer;font-weight:bold;letter-spacing:2px;
+}
+.seal small{display:block;font-size:11px;letter-spacing:1px;margin-top:5px}
+.cover-title{position:absolute;top:55px;left:20px;right:20px;color:#f8e7c6;z-index:2}
+.cover-title h1{font-size:clamp(28px,6vw,48px);font-weight:normal}
+.cover-title p{margin-top:10px;font-size:15px;letter-spacing:2px}
+.ribbon{position:absolute;bottom:28px;color:#e9d2a7;z-index:2;font-size:13px;letter-spacing:3px}
 
-.cover{position:absolute;inset:30px;z-index:3;display:flex;flex-direction:column;align-items:center;text-align:center;justify-content:center;transition:.8s ease}
-.cover.hide{opacity:0;transform:scale(1.04);pointer-events:none}
-.kicker{font-size:.72rem;letter-spacing:4px;text-transform:uppercase;color:#79583d;margin-bottom:14px}
-.cover h1{font-size:clamp(2.6rem,8vw,5.8rem);line-height:.92;color:#563b29}
-.cover .lead{max-width:600px;line-height:1.75;font-size:1.08rem;margin-top:22px}
-.instruction{margin-top:105px;font-size:.78rem;letter-spacing:2px;text-transform:uppercase;color:#805f42;opacity:.8}
-
-/* Unique opening mechanism */
-.seal-button{
- position:absolute;z-index:6;left:50%;top:50%;transform:translate(-50%,-50%);
- width:156px;height:156px;border:0;background:none;cursor:pointer;
- transition:opacity .45s,transform .45s;filter:drop-shadow(0 12px 13px rgba(64,39,21,.3));
-}
-.seal-button:before{
- content:"";position:absolute;inset:0;border-radius:50%;
- background:radial-gradient(circle at 35% 28%,#d8ad70,#a76c45 68%,#845238);
- border:7px double #f1d8a9;
- box-shadow:inset 0 0 0 3px rgba(255,255,255,.16);
-}
-.seal-button:after{
- content:"";position:absolute;inset:-16px;border-radius:50%;
- border:1px dashed rgba(105,67,38,.48);animation:spin 18s linear infinite;
-}
-@keyframes spin{to{transform:rotate(360deg)}}
-.seal-button:hover{transform:translate(-50%,-50%) scale(1.08)}
-.seal-button .wax{
- position:relative;z-index:1;color:#fff7e7;height:100%;display:flex;align-items:center;justify-content:center;flex-direction:column;
- text-transform:uppercase;letter-spacing:2px;font-weight:bold
-}
-.seal-button .wax strong{font-size:2rem;font-family:Georgia,serif;letter-spacing:0}
-.seal-button .wax span{font-size:.68rem;margin-top:5px}
-.open-note{
- position:absolute;z-index:5;left:50%;top:calc(50% + 104px);transform:translateX(-50%);
- color:#674932;font-size:.83rem;letter-spacing:1.5px;white-space:nowrap
-}
-.seal-button.opened{opacity:0;transform:translate(-50%,-50%) scale(.65);pointer-events:none}
-.envelope.opened .seal-button:before{animation:sealBreak .65s ease forwards}
-@keyframes sealBreak{50%{transform:scale(1.16) rotate(-5deg)}100%{transform:scale(.8);opacity:0}}
-
-.letter-wrap{position:relative;z-index:2;opacity:0;transform:translateY(28px);transition:opacity .8s .35s,transform .8s .35s;pointer-events:none}
-.letter-wrap.show{opacity:1;transform:none;pointer-events:auto}
-.letter{
- max-width:770px;margin:0 auto;background:#fff9eb;padding:48px 45px 42px;border-radius:4px;
- border:1px solid #e6cfaa;box-shadow:0 18px 40px rgba(76,48,25,.17);position:relative
-}
-.letter:before{content:"";position:absolute;inset:13px;border:1px dashed #d8b98d;pointer-events:none}
-.ornament{text-align:center;color:#9b7047;letter-spacing:9px;font-size:1.15rem}
-.letter h2{text-align:center;font-size:2.05rem;margin:16px 0 26px;color:#563b29}
-.letter p{font-size:1.04rem;line-height:1.92;margin:14px 0}
-.salutation{text-align:center!important;font-style:italic;font-size:1.2rem!important}
-.highlight{
- margin:26px auto;padding:18px 22px;max-width:620px;text-align:center;
- font-size:1.18rem!important;font-style:italic;line-height:1.7!important;color:#755337;
- border-top:1px solid #d8bb8d;border-bottom:1px solid #d8bb8d
-}
-.closing{text-align:center!important;font-size:1.25rem!important;margin-top:27px!important}
-.signature{text-align:center!important;font-style:italic;margin-top:5px!important;color:#7a5a40}
-.cards{max-width:900px;margin:22px auto 0;display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-.card{background:rgba(255,249,234,.9);padding:20px 16px;text-align:center;border-radius:16px;border:1px solid rgba(110,72,40,.14);box-shadow:0 8px 22px rgba(70,43,22,.09)}
-.card .icon{font-size:1.8rem}.card h3{margin:7px 0}.card p{font-size:.91rem;line-height:1.55}
-.final{margin:20px auto 0;max-width:770px;background:rgba(255,249,234,.78);padding:25px;text-align:center;border-radius:18px;line-height:1.75}
-.reseal{margin-top:15px;background:transparent;border:1px solid #8a6647;border-radius:999px;padding:9px 16px;color:#654832;cursor:pointer}
-@media(max-width:700px){
- .envelope{padding:16px;min-height:680px}.cover{inset:16px}.instruction{margin-top:115px}
- .seal-button{width:136px;height:136px}.open-note{top:calc(50% + 95px)}
- .letter{padding:38px 24px}.cards{grid-template-columns:1fr}
-}
-
-/* Extra envelope decoration */
-.envelope .top-ornament,.envelope .bottom-ornament{
- position:absolute;left:50%;transform:translateX(-50%);z-index:1;white-space:nowrap;
- color:#805c3d;letter-spacing:12px;font-size:1.1rem;opacity:.7
-}
-.envelope .top-ornament{top:18px}.envelope .bottom-ornament{bottom:18px}
-.envelope .top-line,.envelope .bottom-line{
- position:absolute;left:12%;right:12%;height:1px;z-index:1;
- background:linear-gradient(90deg,transparent,#9a7049,transparent);opacity:.45
-}
-.envelope .top-line{top:44px}.envelope .bottom-line{bottom:44px}
-.envelope .decor-flower{position:absolute;z-index:1;font-size:36px;opacity:.62}
-.df1{left:30px;top:65px}.df2{right:30px;top:65px}.df3{left:30px;bottom:62px}.df4{right:30px;bottom:62px}
-
-/* Password + favourite colour experience */
-.modal-backdrop{
- position:fixed;inset:0;z-index:30;display:flex;align-items:center;justify-content:center;
- padding:18px;background:rgba(57,37,22,.48);backdrop-filter:blur(8px);
- opacity:0;pointer-events:none;transition:.35s
-}
-.modal-backdrop.show{opacity:1;pointer-events:auto}
 .modal{
- width:min(470px,94vw);background:#fff8e8;border:1px solid #e2c79c;border-radius:24px;
- padding:34px 28px;text-align:center;box-shadow:0 30px 80px rgba(40,24,12,.35);
- position:relative
+  position:fixed;inset:0;background:#261b1599;display:none;align-items:center;justify-content:center;
+  padding:20px;z-index:100;backdrop-filter:blur(6px)
 }
-.modal:before{content:"";position:absolute;inset:9px;border:1px dashed #d6b98b;border-radius:18px;pointer-events:none}
-.modal .modal-icon{font-size:2.5rem}.modal h2{margin:10px 0 8px;color:#563b29}
-.modal p{line-height:1.65;color:#72563e;font-size:.95rem}
-.modal .question{
- margin:18px 0 10px;font-style:italic;font-size:1.05rem;color:#60442f
+.modal.show{display:flex}
+.box{
+  width:min(430px,94vw);background:#fbf1df;color:var(--ink);border-radius:18px;
+  padding:30px 24px;box-shadow:0 25px 70px #0007;text-align:center;border:1px solid #d7b98e;
 }
-.modal input{
- width:100%;padding:13px 15px;border:1px solid #d6bb91;border-radius:12px;
- background:#fffdf6;color:#4c3829;font-size:1rem;outline:none;text-align:center
+.box h2{font-size:26px;margin-bottom:10px}.box p{color:var(--muted);line-height:1.6;margin-bottom:18px}
+.box input{
+  width:100%;padding:13px 15px;border:1px solid #cdb28f;border-radius:10px;background:#fffaf0;
+  color:var(--ink);outline:none;margin-bottom:12px;
 }
-.modal input:focus{border-color:#9d744c;box-shadow:0 0 0 3px rgba(157,116,76,.12)}
-.modal .action{
- margin-top:14px;border:0;border-radius:999px;padding:12px 23px;background:#76513a;
- color:#fff;cursor:pointer;font-size:.95rem;transition:.2s
+.primary{
+  border:0;border-radius:10px;padding:12px 22px;background:#8e5b3e;color:white;cursor:pointer;
 }
-.modal .action:hover{transform:translateY(-2px);background:#5c3d2d}
-.modal .error{min-height:22px;margin-top:8px;color:#9b4d3c;font-size:.82rem}
-.colour-row{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:12px}
-.swatch{width:28px;height:28px;border-radius:50%;border:2px solid rgba(70,45,25,.2);cursor:pointer}
-.hint{font-size:.75rem!important;opacity:.72;margin-top:12px}
+.error{color:#a33;font-size:13px;min-height:20px;margin-bottom:8px}
+.swatches{display:flex;gap:9px;justify-content:center;flex-wrap:wrap;margin:10px 0 16px}
+.swatch{width:30px;height:30px;border-radius:50%;border:2px solid #fff;box-shadow:0 0 0 1px #bca27f;cursor:pointer}
+.hint{font-size:12px!important;margin:5px 0 0!important}
+
+#diary{
+  display:none;min-height:100vh;padding:25px 12px 35px;
+}
+.diary-wrap{width:min(920px,96vw);margin:auto;position:relative}
+.diary-top{
+  display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;
+  color:#5e4736;font-size:13px;letter-spacing:1px;
+}
+.diary{
+  position:relative;min-height:640px;perspective:1600px;
+}
+.page{
+  position:absolute;inset:0;background:
+    repeating-linear-gradient(to bottom,transparent 0,transparent 31px,#cda98b55 32px),
+    linear-gradient(90deg,#efe0c7,#fff8e8 8%,#fff8e8 92%,#ead6b9);
+  border-radius:5px 15px 15px 5px;
+  box-shadow:0 20px 55px #5c402733, inset 18px 0 25px #b48a6318;
+  padding:48px clamp(28px,6vw,70px);display:flex;flex-direction:column;
+  transform-origin:left center;transition:transform 1.65s cubic-bezier(.2,.7,.2,1),opacity .75s;
+  overflow:hidden;
+}
+.page:before{
+  content:"";position:absolute;left:18px;top:0;bottom:0;width:2px;background:#c7777755;
+}
+.page-number{position:absolute;right:25px;top:18px;color:#9b8069;font-size:13px}
+.page h1{font-size:clamp(31px,6vw,54px);font-weight:normal;margin:28px 0 18px;line-height:1.05}
+.page h2{font-size:28px;font-weight:normal;margin-bottom:15px}
+.page p{font-size:16px;line-height:1.9;color:#5d4939}
+.hand{font-style:normal;font-size:18px!important;font-family:"Brush Script MT","Segoe Script","URW Chancery L",cursive;letter-spacing:.3px}
+.date{font-size:12px!important;letter-spacing:2px;color:#9b7259!important}
+.quote{
+  margin:24px 0;padding:18px 20px;border-left:4px solid var(--accent);
+  background:#fffaf044;font-style:italic;font-size:18px;line-height:1.7;
+}
+.note-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:20px}
+.note{
+  padding:17px 14px;background:#f4dfbd99;border:1px solid #c9aa80;border-radius:4px;
+  transform:rotate(-1deg);box-shadow:2px 5px 8px #6b4c3222;
+}
+.note:nth-child(2){transform:rotate(1.5deg)}.note:nth-child(3){transform:rotate(-.5deg)}
+.note b{display:block;margin-bottom:7px;color:#80543b}.note p{font-size:13px;line-height:1.6}
+.stamp{display:inline-block;padding:8px 12px;border:2px dashed #a96e50;color:#985e43;transform:rotate(-5deg);font-size:12px;letter-spacing:2px;margin-top:18px}
+.page.coverpage{background:linear-gradient(135deg,var(--cover),var(--cover2));color:#fff2da;border:8px solid var(--gold)}
+.coverpage:before{background:#e7b88933}
+.coverpage p{color:#f6dfbf}
+.coverpage h1{font-size:clamp(42px,9vw,76px);color:#fff3df!important;text-shadow:0 2px 12px #4d332555}
+.coverpage .page-number{color:#ead0a8}
+.coverpage .big-flower{font-size:65px;margin-top:20px}
+.signature{margin-top:auto;text-align:right;font-size:22px;font-style:italic;color:#80563f}
+.nav{
+  display:flex;justify-content:center;align-items:center;gap:18px;margin-top:17px;
+}
+.nav button{
+  width:48px;height:42px;border:1px solid #a78667;background:#f5e5cd;border-radius:10px;
+  color:#634a37;cursor:pointer;font-size:22px;
+}
+.nav button:disabled{opacity:.35;cursor:not-allowed}
+.dots{display:flex;gap:7px}.dot{width:8px;height:8px;border-radius:50%;background:#b79a7e}.dot.active{background:#7d5139}
+.tip{text-align:center;color:#765f4b;font-size:12px;margin-top:10px}
+@media(max-width:600px){
+  .diary{min-height:620px}
+  .page{padding:32px 25px 28px 39px}
+  .page p{font-size:14px;line-height:1.62}
+  .page h2{font-size:25px;margin-bottom:9px}
+  .script-quote{font-size:21px;margin:7px 0 11px}
+  .greeting{font-size:18px!important;line-height:1.62!important}
+  .wish-list{gap:8px}
+  .wish{gap:9px;padding:9px 10px}
+  .wish>span{font-size:21px}
+  .wish b{font-size:14px;margin-bottom:2px}
+  .wish p{font-size:12px!important;line-height:1.32!important}
+  .stamp{margin-top:9px;padding:6px 9px}
+}
+
+.big-flower{text-align:center;font-size:58px;margin-top:8px}
+.cover-divider{text-align:center;font-size:16px;letter-spacing:3px;color:#ead0a8;margin:14px 0}
+.greeting{font-size:20px!important;line-height:1.75!important}
+.big-greeting{
+  font-size:clamp(34px,8vw,58px);font-weight:bold;text-align:center;
+  margin:20px 0;color:var(--accent);font-family:Georgia,"Times New Roman",serif;
+}
+.wish-list{display:flex;flex-direction:column;gap:12px;margin-top:5px}
+.wish{
+  display:flex;gap:13px;align-items:flex-start;padding:13px 14px;
+  background:#f4dfbd99;border:1px solid #c9aa80;border-radius:7px;
+  box-shadow:2px 4px 8px #6b4c3222;
+}
+.wish>span{font-size:25px;line-height:1}
+.wish b{display:block;color:#80543b;margin-bottom:3px}
+.wish p{font-size:13px;line-height:1.45;margin:0}
+.final-flower{text-align:center;font-size:48px;margin:5px 0 10px}
+.final-wish{
+  text-align:center;font-size:clamp(26px,6vw,42px);font-weight:bold;
+  color:var(--accent);margin:22px 0 16px;
+}
+.final-quote{text-align:center;border-left:0;border-top:2px dashed var(--accent);border-bottom:2px dashed var(--accent)}
+
+.page{
+  border-top:4px solid color-mix(in srgb,var(--accent),#eadcc9 72%);
+  border-bottom:3px solid color-mix(in srgb,var(--accent),#eadcc9 80%);
+}
+.page:after{
+  content:"";
+  position:absolute;right:-20px;bottom:-20px;width:125px;height:125px;border-radius:50%;
+  background:color-mix(in srgb,var(--accent),transparent 88%);
+  pointer-events:none;
+}
+.page h2,.page h1{color:color-mix(in srgb,var(--accent),#503d31 62%)}
+.page .quote{border-color:var(--accent);background:color-mix(in srgb,var(--accent),#fff8ea 88%)}
+.wish{border-color:color-mix(in srgb,var(--accent),#c9aa80 70%);
+       background:color-mix(in srgb,var(--accent),#fff8ea 91%)}
+.wish b,.stamp{color:var(--accent)}
+.stamp{border-color:var(--accent)}
+.nav button{border-color:color-mix(in srgb,var(--accent),#a78667 72%);
+            background:color-mix(in srgb,var(--accent),#fff8ea 88%)}
+.dot.active{background:var(--accent)}
+
+/* Reliable mobile tap behavior */
+#openSeal{position:relative;z-index:2;-webkit-tap-highlight-color:transparent}
+.modal.show{display:flex!important}
+
+/* Warm, paper-like colour treatment */
+.page:not(.coverpage){
+  background:
+    linear-gradient(90deg,
+      color-mix(in srgb,var(--accent),#fff7e8 94%),
+      #fff8e8 9%,#fff8e8 91%,
+      color-mix(in srgb,var(--accent),#ead8bd 94%)),
+    repeating-linear-gradient(to bottom,transparent 0,transparent 31px,#cda98b44 32px);
+}
+.page:not(.coverpage):after{
+  background:color-mix(in srgb,var(--accent),transparent 94%);
+}
+.coverpage{
+  filter:saturate(.68);
+}
+
+.script-quote{
+  margin:12px 0 18px;
+  padding:8px 12px 10px 16px;
+  border-left:3px solid var(--accent);
+  color:#7b604f;
+  font-family:"Brush Script MT","Segoe Script","URW Chancery L",cursive;
+  font-size:clamp(21px,4.5vw,28px);
+  line-height:1.35;
+  font-style:normal;
+}
+.coverpage .script-quote{
+  color:#fff1da;
+  border-left-color:#f1d19b;
+  text-shadow:0 1px 7px #3f2a1c55;
+}
+
+/* FINAL MOBILE CLARITY FIXES */
+.modal{z-index:1000;}
+#openSeal{z-index:2;}
+
+/* The colour chooser must never be covered by the OPEN seal. */
+.modal.show .box{position:relative;z-index:1001;}
+
+/* Keep Page 3 completely readable on phone screens. */
+@media(max-width:600px){
+  .page[data-page="2"]{
+    padding:24px 22px 14px 36px;
+  }
+  .page[data-page="2"] .page-number{top:12px;right:18px;}
+  .page[data-page="2"] .date{font-size:10px!important;letter-spacing:1.4px;}
+  .page[data-page="2"] .script-quote{
+    font-size:19px;
+    line-height:1.22;
+    margin:5px 0 10px;
+    padding:5px 8px 6px 12px;
+  }
+  .page[data-page="2"] h2{
+    font-size:25px;
+    line-height:1.08;
+    margin-bottom:9px;
+  }
+  .page[data-page="2"] .wish-list{gap:7px;margin-top:0;}
+  .page[data-page="2"] .wish{
+    gap:9px;
+    padding:8px 9px;
+    min-height:0;
+  }
+  .page[data-page="2"] .wish>span{font-size:20px;}
+  .page[data-page="2"] .wish b{
+    font-size:13.5px;
+    line-height:1.12;
+    margin-bottom:2px;
+  }
+  .page[data-page="2"] .wish p{
+    font-size:11.5px!important;
+    line-height:1.25!important;
+  }
+  .page[data-page="2"] .stamp{
+    font-size:9px;
+    padding:4px 7px;
+    margin-top:6px;
+  }
+}
 
 </style>
 </head>
 <body>
+<div class="decor"><div class="flower f1">✿</div><div class="flower f2">❀</div><div class="flower f3">✦</div><div class="flower f4">❁</div></div>
+
+<section id="gate">
+  <div class="envelope" id="envelope">
+    <div class="cover-title">
+      <h1>A Little Diary</h1>
+      <p>A small collection of words worth keeping</p>
+    </div>
+    <button class="seal" id="openSeal">OPEN<small>break the seal</small></button>
+    <div class="ribbon">WITH GRATITUDE • TEACHER'S DAY</div>
+  </div>
+</section>
+
+<div class="modal" id="colorModal">
+  <div class="box">
+    <h2>Choose the diary colour 🎨</h2>
+    <p>What's your favourite colour?<br>The cover, page borders, headings, notes and little details will all match it.</p>
+    <div class="swatches">
+      <button class="swatch" style="background:#8e5b3e" data-c="#8e5b3e"></button>
+      <button class="swatch" style="background:#7d657d" data-c="#7d657d"></button>
+      <button class="swatch" style="background:#547b70" data-c="#547b70"></button>
+      <button class="swatch" style="background:#b07a52" data-c="#b07a52"></button>
+      <button class="swatch" style="background:#526a8a" data-c="#526a8a"></button>
+      <button class="swatch" style="background:#9a6b78" data-c="#9a6b78"></button>
+    </div>
+    <input id="favColor" placeholder="Type a colour or #hex">
+    <button class="primary" id="colorBtn">Open my diary</button>
+  </div>
+</div>
+
+<section id="diary">
+  <div class="diary-wrap">
+    <div class="diary-top">
+      <span>✦ A LITTLE TEACHER'S DAY DIARY</span>
+      <span id="counter">1 / 4</span>
+    </div>
+
+    <div class="diary" id="book">
+
+      <!-- PAGE 1 -->
+      <article class="page coverpage" data-page="0">
+        <div class="page-number">01</div>
+        <div class="date">5 SEPTEMBER • A SPECIAL GREETING</div>
+        <div class="script-quote">“A teacher plants the seeds of wisdom that bloom far beyond the classroom.”</div>
+        <div class="big-flower">🌻</div>
+        <h1>Happy<br>Teacher's Day!</h1>
+        <p class="hand">A little diary of respect, gratitude & warm wishes.</p>
+        <div class="cover-divider">✦ ───────── ✦</div>
+        <p>For someone whose words, guidance or example has made a difference.</p>
+        <div class="signature">— with heartfelt respect</div>
+      </article>
+
+      <!-- PAGE 2 -->
+      <article class="page" data-page="1">
+        <div class="page-number">02</div>
+        <div class="date">PAGE TWO • A WARM GREETING</div>
+        <div class="script-quote">“The influence of a good teacher can never be erased.”</div>
+        <h2>Dear respected mentor,</h2>
+        <p class="hand greeting">Today is a beautiful reminder to celebrate the people who share knowledge, shape confidence and inspire us to become better versions of ourselves.</p>
+        <p style="margin-top:10px">On this Teacher's Day, I simply wanted to say:</p>
+        <div class="big-greeting">Thank you. 🌼</div>
+        <p>Thank you for every word of guidance, every thoughtful suggestion and every moment that helped someone see a little more clearly.</p>
+      </article>
+
+      <!-- PAGE 3 -->
+      <article class="page" data-page="2">
+        <div class="page-number">03</div>
+        <div class="date">PAGE THREE • MY WISHES FOR YOU</div>
+        <div class="script-quote">“A great teacher doesn't just teach; they awaken something within us.”</div>
+        <h2>My Teacher's Day wishes ✨</h2>
+        <div class="wish-list">
+          <div class="wish"><span>🌿</span><div><b>May you always inspire</b><p>May your words continue to give people confidence and courage.</p></div></div>
+          <div class="wish"><span>🌟</span><div><b>May you always be appreciated</b><p>May the impact of your guidance be remembered and valued.</p></div></div>
+          <div class="wish"><span>🌻</span><div><b>May you always stay happy</b><p>Wishing you peace, success and countless reasons to smile.</p></div></div>
+          <div class="wish"><span>📖</span><div><b>May every lesson return as a blessing</b><p>May the good you give to others find its way back to you.</p></div></div>
+        </div>
+        <span class="stamp">WARM WISHES • 2026 ✓</span>
+      </article>
+
+      <!-- PAGE 4 -->
+      <article class="page" data-page="3">
+        <div class="page-number">04</div>
+        <div class="date">LAST PAGE • WITH GRATITUDE</div>
+        <div class="script-quote">“The best teachers leave footprints on our hearts, long after the lesson is over.”</div>
+        <div class="final-flower">🌻</div>
+        <h2>One final wish...</h2>
+        <p>May you continue to touch lives, encourage dreams and make learning feel meaningful.</p>
+        <p style="margin-top:15px">Some people teach a lesson for a moment. Some leave a lesson that stays for years.</p>
+        <div class="quote final-quote">
+          <strong>May your journey always be filled with respect, happiness and the joy of knowing that you made a difference.</strong>
+        </div>
+        <div class="final-wish">Happy Teacher's Day! ❤️</div>
+        <p class="hand">With sincere respect & warmest wishes,</p>
+        <div class="signature">Someone who remembers<br>the lessons that mattered.</div>
+      </article>
+
+    </div>
+
+    <div class="nav">
+      <button id="prev" aria-label="Previous page">‹</button>
+      <div class="dots" id="dots"></div>
+      <button id="next" aria-label="Next page">›</button>
+    </div>
+    <div class="tip">Turn the pages slowly ↔</div>
+  </div>
+</section>
+
 <script>
-const symbols=["🌻","✦","♡","🌼","🍃"];
-for(let i=0;i<18;i++){
- const p=document.createElement("div");p.className="petal";p.textContent=symbols[i%symbols.length];
- p.style.left=Math.random()*100+"vw";p.style.animationDuration=(7+Math.random()*8)+"s";
- p.style.animationDelay=(-Math.random()*12)+"s";p.style.fontSize=(13+Math.random()*15)+"px";
- document.body.appendChild(p);
+const gate=document.getElementById('gate'), diary=document.getElementById('diary');
+const colorModal=document.getElementById('colorModal');
+const pages=[...document.querySelectorAll('.page')];
+let current=0, chosenColor='';
+
+const openSeal=document.getElementById('openSeal');
+openSeal.addEventListener('click', function(e){
+  e.preventDefault();
+  e.stopPropagation();
+  colorModal.classList.add('show');
+});
+
+document.querySelectorAll('.swatch').forEach(s=>s.onclick=()=>{
+  chosenColor=s.dataset.c;document.getElementById('favColor').value=chosenColor;
+});
+document.getElementById('colorBtn').onclick=()=>{
+  const c=document.getElementById('favColor').value.trim() || '#8e5b3e';
+  chosenColor=c;
+  const soft = soften(c);
+  document.documentElement.style.setProperty('--accent',soft);
+  document.documentElement.style.setProperty('--cover',soft);
+  document.documentElement.style.setProperty('--cover2',adjust(soft,-28));
+  document.body.style.setProperty('--user-colour',c);
+  colorModal.classList.remove('show');
+  colorModal.style.pointerEvents='none';
+  gate.style.display='none'; gate.style.pointerEvents='none';
+  diary.style.display='block';
+  showPage(0);
+};
+function soften(c){
+  // For hex colours, mix heavily with warm cream to keep the diary elegant.
+  if(/^#([0-9a-f]{6})$/i.test(c)){
+    const n=parseInt(c.slice(1),16);
+    const r=n>>16,g=(n>>8)&255,b=n&255;
+    const cream=[248,235,211], mix=.72;
+    const rr=Math.round(r*(1-mix)+cream[0]*mix);
+    const gg=Math.round(g*(1-mix)+cream[1]*mix);
+    const bb=Math.round(b*(1-mix)+cream[2]*mix);
+    return '#'+[rr,gg,bb].map(x=>x.toString(16).padStart(2,'0')).join('');
+  }
+  return c;
 }
-</script>
-
-
-<div class="modal-backdrop" id="passwordModal">
- <div class="modal">
-  <div class="modal-icon">🔐</div>
-  <h2>A little secret first…</h2>
-  <p>This letter is meant for someone special.</p>
-  <div class="question">“You are only and only ______.”</div>
-  <input id="passwordInput" type="password" inputmode="numeric" placeholder="Enter the secret password" maxlength="20">
-  <div class="error" id="passwordError"></div>
-  <button class="action" onclick="checkPassword()">Unlock the letter ✨</button>
- </div>
-</div>
-
-<div class="modal-backdrop" id="colourModal">
- <div class="modal">
-  <div class="modal-icon">🎨</div>
-  <h2>One last little detail…</h2>
-  <p>Before the envelope opens, tell it what colour feels like <em>you</em>.</p>
-  <div class="question">What's your favourite colour?</div>
-  <input id="colourInput" type="text" placeholder="e.g. lavender, blue, #d9a7c7" maxlength="30">
-  <div class="colour-row">
-   <button class="swatch" style="background:#d9a7c7" onclick="pickColour('#d9a7c7')"></button>
-   <button class="swatch" style="background:#a8c7e8" onclick="pickColour('#a8c7e8')"></button>
-   <button class="swatch" style="background:#b8d8ba" onclick="pickColour('#b8d8ba')"></button>
-   <button class="swatch" style="background:#e7c17d" onclick="pickColour('#e7c17d')"></button>
-   <button class="swatch" style="background:#d89b86" onclick="pickColour('#d89b86')"></button>
-   <button class="swatch" style="background:#b9a7d9" onclick="pickColour('#b9a7d9')"></button>
-  </div>
-  <div class="error" id="colourError"></div>
-  <button class="action" onclick="applyColour()">Reveal my envelope 🌻</button>
-  <p class="hint">You can type a colour name or a hex colour.</p>
- </div>
-</div>
-
-<div class="scene">
-<div class="envelope" id="envelope">
- <div class="corner c1">✦</div><div class="corner c2">🌿</div><div class="corner c3">🌼</div><div class="corner c4">✦</div>
-    <div class="top-line"></div><div class="bottom-line"></div>
-    <div class="top-ornament">✦  🌿  ✦  🌿  ✦</div>
-    <div class="bottom-ornament">✿  ♡  ✿  ♡  ✿</div>
-    <div class="decor-flower df1">🌿</div><div class="decor-flower df2">🌻</div>
-    <div class="decor-flower df3">🌼</div><div class="decor-flower df4">🌿</div>
-
-
- <section class="cover" id="cover">
-  <div class="kicker">A sealed note of gratitude</div>
-  <div style="font-size:2.7rem">🌻</div>
-  <h1>For Someone<br>Who Made A Difference</h1>
-  <p class="lead">Not every teacher stands in front of a classroom. Some simply leave behind lessons worth carrying for a lifetime.</p>
-  <div class="instruction">A private little letter is waiting inside</div>
- </section>
-
- <button class="seal-button" id="seal" onclick="showPassword()" aria-label="Break the seal and open the letter">
-   <div class="wax"><strong>✉</strong><span>Break the seal</span></div>
- </button>
- <div class="open-note" id="openNote">Press the seal to open</div>
-
- <section class="letter-wrap" id="letterWrap">
-  <article class="letter">
-   <div class="ornament">— ✦ —</div>
-   <h2>To the person whose lessons stayed</h2>
-   <p class="salutation">With sincere gratitude,</p>
-   <p>There are people we call teachers because they teach us from a syllabus. And then there are people who teach us simply through the way they speak, guide, encourage and carry themselves.</p>
-   <p>You are one of those people.</p>
-   <p>Perhaps you never set out to become a memorable part of someone's journey. Yet somewhere along the way, a piece of your wisdom found its place in my mind—a thought, a piece of advice, an example, or perhaps just the confidence you gave when it was needed.</p>
-   <p class="highlight">“The most meaningful lessons are not always the ones written on a board. Some are the ones that quietly change the way we see ourselves.”</p>
-   <p>So on this Teacher's Day, I don't want to thank you merely for what you have taught. I want to thank you for <em>the influence behind those lessons</em>—for making learning feel meaningful, for encouraging growth, and for reminding people that they are capable of more than they sometimes believe.</p>
-   <p>Years may pass, classrooms may change, and pages may be forgotten. But the right words, given at the right moment, have a way of travelling much farther than we imagine.</p>
-   <p>May you always know that the knowledge you share and the encouragement you give do not end when a conversation or a lesson ends. They continue in the people who carry them forward.</p>
-   <p class="closing"><strong>Thank you for being a lesson worth remembering. ❤️</strong></p>
-   <p class="signature">With warmth, respect &amp; heartfelt gratitude</p>
-  </article>
-
-  <div class="cards">
-   <div class="card"><div class="icon">🕯️</div><h3>A Light</h3><p>For making difficult things feel possible when the path was unclear.</p></div>
-   <div class="card"><div class="icon">🧭</div><h3>A Guide</h3><p>For offering direction without ever needing to take the journey for us.</p></div>
-   <div class="card"><div class="icon">🌱</div><h3>An Influence</h3><p>For leaving behind something that continues to grow long after the lesson.</p></div>
-  </div>
-
-  <div class="final">
-   <strong>Happy Teacher's Day 🌻</strong><br>
-   Some people teach for a while. The best ones leave a little wisdom behind forever.
-   <br><button class="reseal" onclick="closeLetter()">Close the letter</button>
-  </div>
- </section>
-</div>
-</div>
-
-<script>
-function showPassword(){
- document.getElementById("passwordModal").classList.add("show");
- setTimeout(()=>document.getElementById("passwordInput").focus(),250);
+function adjust(hex,amt){
+  if(!/^#([0-9a-f]{6})$/i.test(hex)) return '#5b3d2e';
+  let n=parseInt(hex.slice(1),16),r=Math.max(0,Math.min(255,(n>>16)+amt)),g=Math.max(0,Math.min(255,((n>>8)&255)+amt)),b=Math.max(0,Math.min(255,(n&255)+amt));
+  return '#'+[r,g,b].map(x=>x.toString(16).padStart(2,'0')).join('');
 }
-function checkPassword(){
- const value=document.getElementById("passwordInput").value.trim();
- const error=document.getElementById("passwordError");
- if(value==="1"){
-   document.getElementById("passwordModal").classList.remove("show");
-   document.getElementById("colourModal").classList.add("show");
-   setTimeout(()=>document.getElementById("colourInput").focus(),250);
-   error.textContent="";
- }else{
-   error.textContent="That isn't the secret. Try again. ♡";
-   document.getElementById("passwordInput").select();
- }
+function showPage(n){
+  current=Math.max(0,Math.min(3,n));
+  pages.forEach((p,i)=>{
+    p.style.transform=i<current?'rotateY(-110deg) translateX(-20px)':i>current?'translateX(20px)':'rotateY(0deg)';
+    p.style.zIndex=i===current?10:3-i;
+    p.style.opacity=i<current?0:(i===current?1:.98);
+    p.style.pointerEvents=i===current?'auto':'none';
+  });
+  document.getElementById('counter').textContent=(current+1)+' / 4';
+  document.getElementById('prev').disabled=current===0;
+  document.getElementById('next').disabled=current===3;
+  document.getElementById('dots').innerHTML=[0,1,2,3].map(i=>`<span class="dot ${i===current?'active':''}"></span>`).join('');
 }
-function pickColour(c){
- document.getElementById("colourInput").value=c;
-}
-function applyColour(){
- const input=document.getElementById("colourInput");
- const error=document.getElementById("colourError");
- const colour=input.value.trim();
- if(!colour){error.textContent="Tell me a colour first. 🌷";return;}
- const test=document.createElement("span");
- test.style.color=colour;
- if(!test.style.color){
-   error.textContent="I couldn't recognise that colour. Try a name like blue or a hex code.";
-   return;
- }
- document.body.appendChild(test);
- const resolved=test.style.color;
- test.remove();
+document.getElementById('prev').onclick=()=>showPage(current-1);
+document.getElementById('next').onclick=()=>showPage(current+1);
 
- document.documentElement.style.setProperty("--user-colour", resolved);
- const env=document.getElementById("envelope");
- env.style.background=`linear-gradient(145deg, color-mix(in srgb, ${resolved} 48%, #ffffff), color-mix(in srgb, ${resolved} 22%, #fff5e2) 48%, color-mix(in srgb, ${resolved} 58%, #8d6546))`;
- env.style.boxShadow=`0 35px 90px rgba(63,39,20,.34), inset 0 0 45px color-mix(in srgb, ${resolved} 18%, white)`;
-
- document.getElementById("colourModal").classList.remove("show");
- openLetter();
-}
-function openLetter(){
- document.getElementById("envelope").classList.add("opened");
- document.getElementById("cover").classList.add("hide");
- document.getElementById("seal").classList.add("opened");
- document.getElementById("openNote").style.opacity="0";
- setTimeout(()=>document.getElementById("letterWrap").classList.add("show"),300);
-}
-function closeLetter(){
- document.getElementById("letterWrap").classList.remove("show");
- setTimeout(()=>{
-   document.getElementById("envelope").classList.remove("opened");
-   document.getElementById("cover").classList.remove("hide");
-   document.getElementById("seal").classList.remove("opened");
-   document.getElementById("openNote").style.opacity="1";
- },500);
-}
+let startX=0;
+document.getElementById('book').addEventListener('touchstart',e=>startX=e.changedTouches[0].screenX,{passive:true});
+document.getElementById('book').addEventListener('touchend',e=>{
+  const dx=e.changedTouches[0].screenX-startX;
+  if(Math.abs(dx)>45) showPage(current+(dx<0?1:-1));
+},{passive:true});
+document.addEventListener('keydown',e=>{
+  if(diary.style.display==='block'){
+    if(e.key==='ArrowRight')showPage(current+1);
+    if(e.key==='ArrowLeft')showPage(current-1);
+  }
+});
 </script>
 </body>
 </html>
