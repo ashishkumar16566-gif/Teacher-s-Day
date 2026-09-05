@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>A Letter of Gratitude — Teacher's Day</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+ min-height:100vh;color:#4c3829;font-family:Georgia,"Times New Roman",serif;
+ background:
+ radial-gradient(circle at 18% 12%,rgba(255,255,255,.72),transparent 27%),
+ radial-gradient(circle at 84% 82%,rgba(122,79,40,.12),transparent 28%),
+ linear-gradient(135deg,#cba577,#f3dfbd 48%,#c69b67);
+ overflow-x:hidden;
+}
+.petal{position:fixed;top:-40px;z-index:0;opacity:.6;animation:fall linear infinite;pointer-events:none}
+@keyframes fall{to{transform:translateY(110vh) rotate(360deg)}}
+.scene{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:28px 14px;position:relative;z-index:1}
+.envelope{
+ width:min(920px,95vw);min-height:650px;position:relative;border-radius:10px 10px 22px 22px;
+ background:linear-gradient(145deg,#e6c79a,#f8e4c1 48%,#d3aa76);
+ box-shadow:0 35px 90px rgba(63,39,20,.34),inset 0 0 45px rgba(255,255,255,.22);
+ overflow:hidden;padding:30px;
+}
+.envelope:after{
+ content:"";position:absolute;inset:0;pointer-events:none;
+ background:linear-gradient(30deg,transparent 49.8%,rgba(92,59,31,.11) 50%,transparent 50.2%),
+ linear-gradient(-30deg,transparent 49.8%,rgba(92,59,31,.10) 50%,transparent 50.2%);
+}
+.corner{position:absolute;font-size:28px;opacity:.65;z-index:1}.c1{left:22px;top:18px}.c2{right:22px;top:18px}.c3{left:22px;bottom:18px}.c4{right:22px;bottom:18px}
+
+.cover{position:absolute;inset:30px;z-index:3;display:flex;flex-direction:column;align-items:center;text-align:center;justify-content:center;transition:.8s ease}
+.cover.hide{opacity:0;transform:scale(1.04);pointer-events:none}
+.kicker{font-size:.72rem;letter-spacing:4px;text-transform:uppercase;color:#79583d;margin-bottom:14px}
+.cover h1{font-size:clamp(2.6rem,8vw,5.8rem);line-height:.92;color:#563b29}
+.cover .lead{max-width:600px;line-height:1.75;font-size:1.08rem;margin-top:22px}
+.instruction{margin-top:105px;font-size:.78rem;letter-spacing:2px;text-transform:uppercase;color:#805f42;opacity:.8}
+
+/* Unique opening mechanism */
+.seal-button{
+ position:absolute;z-index:6;left:50%;top:50%;transform:translate(-50%,-50%);
+ width:156px;height:156px;border:0;background:none;cursor:pointer;
+ transition:opacity .45s,transform .45s;filter:drop-shadow(0 12px 13px rgba(64,39,21,.3));
+}
+.seal-button:before{
+ content:"";position:absolute;inset:0;border-radius:50%;
+ background:radial-gradient(circle at 35% 28%,#d8ad70,#a76c45 68%,#845238);
+ border:7px double #f1d8a9;
+ box-shadow:inset 0 0 0 3px rgba(255,255,255,.16);
+}
+.seal-button:after{
+ content:"";position:absolute;inset:-16px;border-radius:50%;
+ border:1px dashed rgba(105,67,38,.48);animation:spin 18s linear infinite;
+}
+@keyframes spin{to{transform:rotate(360deg)}}
+.seal-button:hover{transform:translate(-50%,-50%) scale(1.08)}
+.seal-button .wax{
+ position:relative;z-index:1;color:#fff7e7;height:100%;display:flex;align-items:center;justify-content:center;flex-direction:column;
+ text-transform:uppercase;letter-spacing:2px;font-weight:bold
+}
+.seal-button .wax strong{font-size:2rem;font-family:Georgia,serif;letter-spacing:0}
+.seal-button .wax span{font-size:.68rem;margin-top:5px}
+.open-note{
+ position:absolute;z-index:5;left:50%;top:calc(50% + 104px);transform:translateX(-50%);
+ color:#674932;font-size:.83rem;letter-spacing:1.5px;white-space:nowrap
+}
+.seal-button.opened{opacity:0;transform:translate(-50%,-50%) scale(.65);pointer-events:none}
+.envelope.opened .seal-button:before{animation:sealBreak .65s ease forwards}
+@keyframes sealBreak{50%{transform:scale(1.16) rotate(-5deg)}100%{transform:scale(.8);opacity:0}}
+
+.letter-wrap{position:relative;z-index:2;opacity:0;transform:translateY(28px);transition:opacity .8s .35s,transform .8s .35s;pointer-events:none}
+.letter-wrap.show{opacity:1;transform:none;pointer-events:auto}
+.letter{
+ max-width:770px;margin:0 auto;background:#fff9eb;padding:48px 45px 42px;border-radius:4px;
+ border:1px solid #e6cfaa;box-shadow:0 18px 40px rgba(76,48,25,.17);position:relative
+}
+.letter:before{content:"";position:absolute;inset:13px;border:1px dashed #d8b98d;pointer-events:none}
+.ornament{text-align:center;color:#9b7047;letter-spacing:9px;font-size:1.15rem}
+.letter h2{text-align:center;font-size:2.05rem;margin:16px 0 26px;color:#563b29}
+.letter p{font-size:1.04rem;line-height:1.92;margin:14px 0}
+.salutation{text-align:center!important;font-style:italic;font-size:1.2rem!important}
+.highlight{
+ margin:26px auto;padding:18px 22px;max-width:620px;text-align:center;
+ font-size:1.18rem!important;font-style:italic;line-height:1.7!important;color:#755337;
+ border-top:1px solid #d8bb8d;border-bottom:1px solid #d8bb8d
+}
+.closing{text-align:center!important;font-size:1.25rem!important;margin-top:27px!important}
+.signature{text-align:center!important;font-style:italic;margin-top:5px!important;color:#7a5a40}
+.cards{max-width:900px;margin:22px auto 0;display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.card{background:rgba(255,249,234,.9);padding:20px 16px;text-align:center;border-radius:16px;border:1px solid rgba(110,72,40,.14);box-shadow:0 8px 22px rgba(70,43,22,.09)}
+.card .icon{font-size:1.8rem}.card h3{margin:7px 0}.card p{font-size:.91rem;line-height:1.55}
+.final{margin:20px auto 0;max-width:770px;background:rgba(255,249,234,.78);padding:25px;text-align:center;border-radius:18px;line-height:1.75}
+.reseal{margin-top:15px;background:transparent;border:1px solid #8a6647;border-radius:999px;padding:9px 16px;color:#654832;cursor:pointer}
+@media(max-width:700px){
+ .envelope{padding:16px;min-height:680px}.cover{inset:16px}.instruction{margin-top:115px}
+ .seal-button{width:136px;height:136px}.open-note{top:calc(50% + 95px)}
+ .letter{padding:38px 24px}.cards{grid-template-columns:1fr}
+}
+
+/* Extra envelope decoration */
+.envelope .top-ornament,.envelope .bottom-ornament{
+ position:absolute;left:50%;transform:translateX(-50%);z-index:1;white-space:nowrap;
+ color:#805c3d;letter-spacing:12px;font-size:1.1rem;opacity:.7
+}
+.envelope .top-ornament{top:18px}.envelope .bottom-ornament{bottom:18px}
+.envelope .top-line,.envelope .bottom-line{
+ position:absolute;left:12%;right:12%;height:1px;z-index:1;
+ background:linear-gradient(90deg,transparent,#9a7049,transparent);opacity:.45
+}
+.envelope .top-line{top:44px}.envelope .bottom-line{bottom:44px}
+.envelope .decor-flower{position:absolute;z-index:1;font-size:36px;opacity:.62}
+.df1{left:30px;top:65px}.df2{right:30px;top:65px}.df3{left:30px;bottom:62px}.df4{right:30px;bottom:62px}
+
+/* Password + favourite colour experience */
+.modal-backdrop{
+ position:fixed;inset:0;z-index:30;display:flex;align-items:center;justify-content:center;
+ padding:18px;background:rgba(57,37,22,.48);backdrop-filter:blur(8px);
+ opacity:0;pointer-events:none;transition:.35s
+}
+.modal-backdrop.show{opacity:1;pointer-events:auto}
+.modal{
+ width:min(470px,94vw);background:#fff8e8;border:1px solid #e2c79c;border-radius:24px;
+ padding:34px 28px;text-align:center;box-shadow:0 30px 80px rgba(40,24,12,.35);
+ position:relative
+}
+.modal:before{content:"";position:absolute;inset:9px;border:1px dashed #d6b98b;border-radius:18px;pointer-events:none}
+.modal .modal-icon{font-size:2.5rem}.modal h2{margin:10px 0 8px;color:#563b29}
+.modal p{line-height:1.65;color:#72563e;font-size:.95rem}
+.modal .question{
+ margin:18px 0 10px;font-style:italic;font-size:1.05rem;color:#60442f
+}
+.modal input{
+ width:100%;padding:13px 15px;border:1px solid #d6bb91;border-radius:12px;
+ background:#fffdf6;color:#4c3829;font-size:1rem;outline:none;text-align:center
+}
+.modal input:focus{border-color:#9d744c;box-shadow:0 0 0 3px rgba(157,116,76,.12)}
+.modal .action{
+ margin-top:14px;border:0;border-radius:999px;padding:12px 23px;background:#76513a;
+ color:#fff;cursor:pointer;font-size:.95rem;transition:.2s
+}
+.modal .action:hover{transform:translateY(-2px);background:#5c3d2d}
+.modal .error{min-height:22px;margin-top:8px;color:#9b4d3c;font-size:.82rem}
+.colour-row{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:12px}
+.swatch{width:28px;height:28px;border-radius:50%;border:2px solid rgba(70,45,25,.2);cursor:pointer}
+.hint{font-size:.75rem!important;opacity:.72;margin-top:12px}
+
+</style>
+</head>
+<body>
+<script>
+const symbols=["🌻","✦","♡","🌼","🍃"];
+for(let i=0;i<18;i++){
+ const p=document.createElement("div");p.className="petal";p.textContent=symbols[i%symbols.length];
+ p.style.left=Math.random()*100+"vw";p.style.animationDuration=(7+Math.random()*8)+"s";
+ p.style.animationDelay=(-Math.random()*12)+"s";p.style.fontSize=(13+Math.random()*15)+"px";
+ document.body.appendChild(p);
+}
+</script>
+
+
+<div class="modal-backdrop" id="passwordModal">
+ <div class="modal">
+  <div class="modal-icon">🔐</div>
+  <h2>A little secret first…</h2>
+  <p>This letter is meant for someone special.</p>
+  <div class="question">“You are only and only ______.”</div>
+  <input id="passwordInput" type="password" inputmode="numeric" placeholder="Enter the secret password" maxlength="20">
+  <div class="error" id="passwordError"></div>
+  <button class="action" onclick="checkPassword()">Unlock the letter ✨</button>
+ </div>
+</div>
+
+<div class="modal-backdrop" id="colourModal">
+ <div class="modal">
+  <div class="modal-icon">🎨</div>
+  <h2>One last little detail…</h2>
+  <p>Before the envelope opens, tell it what colour feels like <em>you</em>.</p>
+  <div class="question">What's your favourite colour?</div>
+  <input id="colourInput" type="text" placeholder="e.g. lavender, blue, #d9a7c7" maxlength="30">
+  <div class="colour-row">
+   <button class="swatch" style="background:#d9a7c7" onclick="pickColour('#d9a7c7')"></button>
+   <button class="swatch" style="background:#a8c7e8" onclick="pickColour('#a8c7e8')"></button>
+   <button class="swatch" style="background:#b8d8ba" onclick="pickColour('#b8d8ba')"></button>
+   <button class="swatch" style="background:#e7c17d" onclick="pickColour('#e7c17d')"></button>
+   <button class="swatch" style="background:#d89b86" onclick="pickColour('#d89b86')"></button>
+   <button class="swatch" style="background:#b9a7d9" onclick="pickColour('#b9a7d9')"></button>
+  </div>
+  <div class="error" id="colourError"></div>
+  <button class="action" onclick="applyColour()">Reveal my envelope 🌻</button>
+  <p class="hint">You can type a colour name or a hex colour.</p>
+ </div>
+</div>
+
+<div class="scene">
+<div class="envelope" id="envelope">
+ <div class="corner c1">✦</div><div class="corner c2">🌿</div><div class="corner c3">🌼</div><div class="corner c4">✦</div>
+    <div class="top-line"></div><div class="bottom-line"></div>
+    <div class="top-ornament">✦  🌿  ✦  🌿  ✦</div>
+    <div class="bottom-ornament">✿  ♡  ✿  ♡  ✿</div>
+    <div class="decor-flower df1">🌿</div><div class="decor-flower df2">🌻</div>
+    <div class="decor-flower df3">🌼</div><div class="decor-flower df4">🌿</div>
+
+
+ <section class="cover" id="cover">
+  <div class="kicker">A sealed note of gratitude</div>
+  <div style="font-size:2.7rem">🌻</div>
+  <h1>For Someone<br>Who Made A Difference</h1>
+  <p class="lead">Not every teacher stands in front of a classroom. Some simply leave behind lessons worth carrying for a lifetime.</p>
+  <div class="instruction">A private little letter is waiting inside</div>
+ </section>
+
+ <button class="seal-button" id="seal" onclick="showPassword()" aria-label="Break the seal and open the letter">
+   <div class="wax"><strong>✉</strong><span>Break the seal</span></div>
+ </button>
+ <div class="open-note" id="openNote">Press the seal to open</div>
+
+ <section class="letter-wrap" id="letterWrap">
+  <article class="letter">
+   <div class="ornament">— ✦ —</div>
+   <h2>To the person whose lessons stayed</h2>
+   <p class="salutation">With sincere gratitude,</p>
+   <p>There are people we call teachers because they teach us from a syllabus. And then there are people who teach us simply through the way they speak, guide, encourage and carry themselves.</p>
+   <p>You are one of those people.</p>
+   <p>Perhaps you never set out to become a memorable part of someone's journey. Yet somewhere along the way, a piece of your wisdom found its place in my mind—a thought, a piece of advice, an example, or perhaps just the confidence you gave when it was needed.</p>
+   <p class="highlight">“The most meaningful lessons are not always the ones written on a board. Some are the ones that quietly change the way we see ourselves.”</p>
+   <p>So on this Teacher's Day, I don't want to thank you merely for what you have taught. I want to thank you for <em>the influence behind those lessons</em>—for making learning feel meaningful, for encouraging growth, and for reminding people that they are capable of more than they sometimes believe.</p>
+   <p>Years may pass, classrooms may change, and pages may be forgotten. But the right words, given at the right moment, have a way of travelling much farther than we imagine.</p>
+   <p>May you always know that the knowledge you share and the encouragement you give do not end when a conversation or a lesson ends. They continue in the people who carry them forward.</p>
+   <p class="closing"><strong>Thank you for being a lesson worth remembering. ❤️</strong></p>
+   <p class="signature">With warmth, respect &amp; heartfelt gratitude</p>
+  </article>
+
+  <div class="cards">
+   <div class="card"><div class="icon">🕯️</div><h3>A Light</h3><p>For making difficult things feel possible when the path was unclear.</p></div>
+   <div class="card"><div class="icon">🧭</div><h3>A Guide</h3><p>For offering direction without ever needing to take the journey for us.</p></div>
+   <div class="card"><div class="icon">🌱</div><h3>An Influence</h3><p>For leaving behind something that continues to grow long after the lesson.</p></div>
+  </div>
+
+  <div class="final">
+   <strong>Happy Teacher's Day 🌻</strong><br>
+   Some people teach for a while. The best ones leave a little wisdom behind forever.
+   <br><button class="reseal" onclick="closeLetter()">Close the letter</button>
+  </div>
+ </section>
+</div>
+</div>
+
+<script>
+function showPassword(){
+ document.getElementById("passwordModal").classList.add("show");
+ setTimeout(()=>document.getElementById("passwordInput").focus(),250);
+}
+function checkPassword(){
+ const value=document.getElementById("passwordInput").value.trim();
+ const error=document.getElementById("passwordError");
+ if(value==="1"){
+   document.getElementById("passwordModal").classList.remove("show");
+   document.getElementById("colourModal").classList.add("show");
+   setTimeout(()=>document.getElementById("colourInput").focus(),250);
+   error.textContent="";
+ }else{
+   error.textContent="That isn't the secret. Try again. ♡";
+   document.getElementById("passwordInput").select();
+ }
+}
+function pickColour(c){
+ document.getElementById("colourInput").value=c;
+}
+function applyColour(){
+ const input=document.getElementById("colourInput");
+ const error=document.getElementById("colourError");
+ const colour=input.value.trim();
+ if(!colour){error.textContent="Tell me a colour first. 🌷";return;}
+ const test=document.createElement("span");
+ test.style.color=colour;
+ if(!test.style.color){
+   error.textContent="I couldn't recognise that colour. Try a name like blue or a hex code.";
+   return;
+ }
+ document.body.appendChild(test);
+ const resolved=test.style.color;
+ test.remove();
+
+ document.documentElement.style.setProperty("--user-colour", resolved);
+ const env=document.getElementById("envelope");
+ env.style.background=`linear-gradient(145deg, color-mix(in srgb, ${resolved} 48%, #ffffff), color-mix(in srgb, ${resolved} 22%, #fff5e2) 48%, color-mix(in srgb, ${resolved} 58%, #8d6546))`;
+ env.style.boxShadow=`0 35px 90px rgba(63,39,20,.34), inset 0 0 45px color-mix(in srgb, ${resolved} 18%, white)`;
+
+ document.getElementById("colourModal").classList.remove("show");
+ openLetter();
+}
+function openLetter(){
+ document.getElementById("envelope").classList.add("opened");
+ document.getElementById("cover").classList.add("hide");
+ document.getElementById("seal").classList.add("opened");
+ document.getElementById("openNote").style.opacity="0";
+ setTimeout(()=>document.getElementById("letterWrap").classList.add("show"),300);
+}
+function closeLetter(){
+ document.getElementById("letterWrap").classList.remove("show");
+ setTimeout(()=>{
+   document.getElementById("envelope").classList.remove("opened");
+   document.getElementById("cover").classList.remove("hide");
+   document.getElementById("seal").classList.remove("opened");
+   document.getElementById("openNote").style.opacity="1";
+ },500);
+}
+</script>
+</body>
+</html>
